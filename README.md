@@ -1,55 +1,21 @@
-# docker-tikaserver
-This repo contains the Dockerfile to create a docker image that contains the latest Ubuntu running the Apache Tika 1.18 Server on Port 9998 using Java 8.
+# docker-anaconda
 
-Out-of-the-box the container also includes dependencies for the GDAL and Tesseract OCR parsers.  To balance showing functionality versus the size of the image, this file currently installs the language packs for the following languages:
-* English
-* French
-* German
-* Italian
-* Spanish.
+Docker container with a bootstrapped installation of [Anaconda](http://continuum.io/downloads) (based on Python 3.5) that is ready to use.
 
-To install more languages simply update the apt-get command to include the package containing the language you required, or include your own custom packs using an ADD command.
+The Anaconda distribution is installed into the `/opt/conda` folder and ensures that the default user has the `conda` command in their path.
 
-## Usage
+Anaconda is the leading open data science platform powered by Python. The open source version of Anaconda is a high performance distribution and includes over 100 of the most popular Python packages for data science. Additionally, it provides access to over 720 Python and R packages that can easily be installed using the conda dependency and environment manager, which is included in Anaconda.
 
-First you need to pull down the build from Dockerhub, which can be done by invoking:
+Usage
+-----
 
-    docker pull logicalspark/docker-tikaserver
+You can download and run this image using the following commands:
 
-Then to run the container, execute the following command:
+    docker pull continuumio/anaconda3
+    docker run -i -t continuumio/anaconda3 /bin/bash
 
-    docker run -d -p 9998:9998 logicalspark/docker-tikaserver
+Alternatively, you can start a Jupyter Notebook server and interact with Anaconda via your browser:
 
-## Building
+    docker run -i -t -p 8888:8888 continuumio/anaconda3 /bin/bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser"
 
-To build the image from scratch, simply invoke:
-
-    docker build -t 'docker-tikaserver' github.com/LogicalSpark/docker-tikaserver
-   
-You can then use the following command (using the name you allocated in the build command as part of -t option):
-
-    docker run -d -p 9998:9998 docker-tikaserver
-    
-## More
-
-For more info on Apache Tika Server, go to the [Apache Tika Server documentation](http://wiki.apache.org/tika/TikaJAXRS).
-
-## Author
-
-  * David Meikle (<david@logicalspark.com>)
-
-## Licence
-
-   Copyright 2015-2018 David Meikle
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+You can then view the Jupyter Notebook by opening `http://localhost:8888` in your browser, or `http://<DOCKER-MACHINE-IP>:8888` if you are using a Docker Machine VM.
