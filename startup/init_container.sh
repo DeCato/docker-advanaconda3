@@ -21,6 +21,4 @@ eval $(printenv | awk -F= '{print "export " $1"="$2 }' >> /etc/profile)
 # Start the Jupyter server
 /opt/conda/bin/conda install jupyter -y --quiet
 mkdir /opt/notebooks
-/opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser
-
-
+/opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888 --no-browser --allow-root
