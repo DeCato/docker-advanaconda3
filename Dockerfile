@@ -21,7 +21,7 @@ RUN 	chmod 755 /opt/startup/init_container.sh
 RUN pip install textrazor
 RUN pip install tika
 RUN conda install gensim -y
-RUN conda install flask=0.12.2
+RUN conda install flask=0.12.2 -y
 
 EXPOSE 2222 8888 8800
 ENTRYPOINT ["/opt/startup/init_container.sh"]
