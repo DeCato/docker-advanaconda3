@@ -18,5 +18,5 @@ RUN 	apt-get update \
 
 RUN 	chmod 755 /opt/startup/init_container.sh
 
-EXPOSE 2222 8888
+EXPOSE 2222 8888 8000
 ENTRYPOINT ["/opt/startup/init_container.sh"]
