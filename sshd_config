@@ -13,4 +13,5 @@ SyslogFacility 		DAEMON
 PasswordAuthentication 	yes
 PermitEmptyPasswords 	no
 PermitRootLogin 	yes
-
+ClientAliveInterval 300
+ClientAliveCountMax 2
