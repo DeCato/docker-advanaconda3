@@ -22,7 +22,7 @@ RUN conda install gensim -y
 RUN conda install -c conda-forge jupyterlab -y
 RUN conda install flask=0.12.2 -y
 
-RUN pip install textrazor tika flask-cors pyopenssl azure-storage-file azure-storage-blob applicationinsights gunicorn
+RUN pip install textrazor tika flask-cors pyopenssl azure-storage-file azure-storage-blob applicationinsights geocoder gunicorn
 
 EXPOSE 80 2222 8888 8700-8800 9999
 ENTRYPOINT ["/opt/startup/init_container.sh"]
