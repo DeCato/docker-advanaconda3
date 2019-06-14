@@ -1,0 +1,11 @@
+server {
+    listen 8800;
+    server_name Puratos-Autotagging.westeurope.azurecontainer.io;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/opt/notebooks/advanaconda.sock;
+        proxy_read_timeout 300s;
+    }
+
+}

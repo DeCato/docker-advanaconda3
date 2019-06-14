@@ -1,0 +1,16 @@
+server {
+    listen 8800 ssl;
+    server_name Puratos-Autotagging.westeurope.azurecontainer.io;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/opt/notebooks/advanaconda.sock;
+        proxy_read_timeout 300s;
+    }
+
+    ssl_certificate /etc/letsencrypt/live/Puratos-Autotagging.westeurope.azurecontainer.io/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/Puratos-Autotagging.westeurope.azurecontainer.io/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+}
