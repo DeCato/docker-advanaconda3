@@ -4,6 +4,8 @@ MAINTAINER david@logicalspark.com
 COPY startup /opt/startup
 COPY sshd_config /etc/ssh/
 COPY sources.list /etc/apt/sources.list.d/
+RUN mkdir /opt/notebooks
+COPY code /opt/notebooks
 
 ENV DEBIAN_FRONTEND noninteractive
 
